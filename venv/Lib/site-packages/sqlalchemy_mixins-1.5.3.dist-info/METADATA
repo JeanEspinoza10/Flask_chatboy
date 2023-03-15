@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: sqlalchemy-mixins
+Version: 1.5.3
+Summary: Active Record, Django-like queries, nested eager load and beauty __repr__ for SQLAlchemy
+Home-page: https://github.com/absent1706/sqlalchemy-mixins
+Author: Alexander Litvinenko
+Author-email: litvinenko1706@gmail.com
+License: MIT
+Download-URL: https://github.com/absent1706/sqlalchemy-mixins/archive/master.tar.gz
+Keywords: sqlalchemy,active record,activerecord,orm,django-like,django,eager load,eagerload,repr,__repr__,mysql,postgresql,pymysql,sqlite
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Database
+License-File: LICENSE.txt
+Requires-Dist: SQLAlchemy (>=1.0)
+Requires-Dist: six
+Requires-Dist: typing ; python_version < "3.5"
+
+UNKNOWN
+
