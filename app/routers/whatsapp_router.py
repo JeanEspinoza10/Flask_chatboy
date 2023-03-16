@@ -12,6 +12,8 @@ webhook_ns = api.namespace(
     path ="/whatsapp"
 )
 
+load_dotenv()
+
 @webhook_ns.route("")
 class Whatsapp(Resource):
     def get(self):
@@ -20,9 +22,10 @@ class Whatsapp(Resource):
             accessToken = os.environ.get("ACCES_TOKEN")
             print(accessToken)
             token = query.args.get("hub.verify_token")
+            print(token)
             challenge = query.args.get("hub.challenge")
             suscribe=query.args.get("hub.mode")
-            if token == accessToken:
+            if token != None and challenge != None and token == accessToken:
                 return challenge
             else:
                 return "No se valido correctamente", 400
