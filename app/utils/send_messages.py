@@ -5,7 +5,7 @@ import os
 def SendMessageWhatsapp(data):
     try:
         token = os.environ.get("TOKEN")
-        api_url= "https://graph.facebook.com/v15.0/109499142068659/messages"
+        api_url= os.environ.get("API_URL")
         headers = {"Content-Type": "application/json", "Authorization":f"Bearer {token}"}
         response = requests.post(api_url, data=json.dumps(data), headers=headers)
         if response.status_code == 200:

@@ -23,6 +23,7 @@ class Webhook:
         try:
             #Obtener el texto y el numero telefonico
             body = query.get_json()
+            print(body)
             entry = (body["entry"])[0]
             changes = (entry["changes"])[0]
             value = (changes["value"])
@@ -34,7 +35,7 @@ class Webhook:
             data = GenerateMessage(text, number)
         
             # Envio de mensaje
-            enviar = SendMessageWhatsapp(data)    
+            enviar = SendMessageWhatsapp(data=data)    
 
             return "EVENT_RECEIVED"
         except Exception as e:
