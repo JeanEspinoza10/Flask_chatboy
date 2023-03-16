@@ -8,7 +8,8 @@ class Webhook:
             accessToken = os.getenv("ACCES_TOKEN")
             token = query.args.get("hub.verify_token")
             challenge = query.args.get("hub.challenge")
-            if token != None and challenge != None and token == accessToken:
+            suscribe=query.args.get("hub.mode")
+            if token == accessToken:
                 return challenge
             else:
                 return "No se valido correctamente", 400
