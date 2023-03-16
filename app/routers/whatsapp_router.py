@@ -18,21 +18,8 @@ load_dotenv()
 class Whatsapp(Resource):
     def get(self):
         query = request
-        try:
-            accessToken = os.environ.get("ACCES_TOKEN")
-            token = query.args.get("hub.verify_token")
-            
-            challenge = query.args.get("hub.challenge")
-            
-            suscribe=query.args.get("hub.mode")
-            if token != None and challenge != None and token == accessToken:
-                challenge = int(challenge)
-                print(type(challenge))
-                return challenge
-            else:
-                return "No se valido correctamente", 400
-        except: 
-            return"Error", 400
+        controller = Webhook
+        return controller.VerifyToken(query)
     def post(self):
         query = request
         controller = Webhook

@@ -1,15 +1,18 @@
 from flask import request
 import os
-
+from app.utils.obtencion_messages import GetTextUser
+from app.utils.generate_messages import GenerateMessage
+from app.utils.send_messages import SendMessageWhatsapp
 
 class Webhook:
     def VerifyToken(query):
         try:
-            accessToken = os.getenv("ACCES_TOKEN")
+            accessToken = os.environ.get("ACCES_TOKEN")
             token = query.args.get("hub.verify_token")
             challenge = query.args.get("hub.challenge")
             suscribe=query.args.get("hub.mode")
-            if token == accessToken:
+            if token != None and challenge != None and token == accessToken:
+                challenge = int(challenge)
                 return challenge
             else:
                 return "No se valido correctamente", 400
@@ -25,7 +28,13 @@ class Webhook:
             value = (changes["value"])
             message = (value["messages"])[0]
             number = message["from"]
-            print(number)
+            text = GetTextUser(message)
+
+            # Obtencion del formato de envio
+            data = GenerateMessage(text, number)
+        
+            # Envio de mensaje
+            enviar = SendMessageWhatsapp(data)    
 
             return "EVENT_RECEIVED"
         except Exception as e:
