@@ -3,6 +3,9 @@ from flask_restx import Resource
 from flask import request
 from app.controller.whatasapp_controller import Webhook
 import os
+from dotenv import load_dotenv
+
+
 webhook_ns = api.namespace(
     name="Webhook",
     description="Ruta para recibir y enviar",
@@ -14,7 +17,8 @@ class Whatsapp(Resource):
     def get(self):
         query = request
         try:
-            accessToken = os.getenv("ACCES_TOKEN")
+            accessToken = os.environ.get("ACCES_TOKEN")
+            print(accessToken)
             token = query.args.get("hub.verify_token")
             challenge = query.args.get("hub.challenge")
             suscribe=query.args.get("hub.mode")
@@ -28,3 +32,5 @@ class Whatsapp(Resource):
         query = request
         controller = Webhook
         return controller.ReceiverMessage(query)
+
+
