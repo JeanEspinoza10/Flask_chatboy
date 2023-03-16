@@ -23,11 +23,12 @@ class Whatsapp(Resource):
             token = query.args.get("hub.verify_token")
             
             challenge = query.args.get("hub.challenge")
-            print(challenge)
+            
             suscribe=query.args.get("hub.mode")
             if token != None and challenge != None and token == accessToken:
-                challenge_sincomillas = challenge.strip('""')
-                return challenge_sincomillas
+                challenge = int(challenge)
+                print(type(challenge))
+                return challenge
             else:
                 return "No se valido correctamente", 400
         except: 
