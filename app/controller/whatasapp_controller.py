@@ -39,7 +39,7 @@ class Webhook:
 
             # Obtencion del formato de envio
             data = GenerateMessage(text, number, name)
-        
+            
             # Envio de mensaje
             enviar = SendMessageWhatsapp(data=data)    
 
