@@ -4,7 +4,7 @@ def TextPresentacion(number):
             "to": number,
             "type": "text",
             "text": {
-                "body": "Hola, buenas tardes. Puede brindarnos los siguientes datos: 1) Nombre y apellidos 2) Correo"
+                "body": "*Hola, buenas tardes* 😊"
                 }
         }
     
