@@ -1,10 +1,10 @@
-def TextPresentacion(number):
+def TextPresentacion(number, name):
     data = {
             "messaging_product": "whatsapp",
             "to": number,
             "type": "text",
             "text": {
-                "body": "*Hola, buenas tardes* 😊"
+                "body": f"*Hola,{name}.Tenemos estas opciones:* 😊"
                 }
         }
     

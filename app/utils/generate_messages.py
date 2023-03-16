@@ -1,6 +1,6 @@
 from app.plantillas.bienvenida_messages import TextPresentacion
-def GenerateMessage(messageUser, number):
+def GenerateMessage(messageUser, number, name):
     data = None
-    data = TextPresentacion(number)
+    data = TextPresentacion(number, name)
     return data
     

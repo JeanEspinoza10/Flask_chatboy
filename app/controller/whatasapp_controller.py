@@ -30,14 +30,15 @@ class Webhook:
             message = (value["messages"])[0]
             number = message["from"]
             text = GetTextUser(message)
-            print(text, number)
+    
             # Obtener el perfil
             contacts = (value["contacts"])[0]
             profile = contacts["profile"]
             name = profile["name"]
-            print(name)
+
+
             # Obtencion del formato de envio
-            data = GenerateMessage(text, number)
+            data = GenerateMessage(text, number, name)
         
             # Envio de mensaje
             enviar = SendMessageWhatsapp(data=data)    
