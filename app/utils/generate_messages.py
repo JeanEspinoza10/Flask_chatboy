@@ -2,6 +2,7 @@ from app.plantillas import bienvenida_messages, listaopciones_messages, tickets_
 
 def GenerateMessage(messageUser, number, name):
     
+    messageUser = messageUser.lower()
     data = None
     
     if "1" in messageUser:
