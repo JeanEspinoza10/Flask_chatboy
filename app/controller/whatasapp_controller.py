@@ -25,9 +25,9 @@ class Webhook:
             
             #Obtener el texto y el numero telefonico
             body = query.get_json()
-            print(body)
             entry = (body["entry"])[0]
             changes = (entry["changes"])[0]
+            print(changes)
             value = (changes["value"])
             message = (value["messages"])[0]
             number = message["from"]
