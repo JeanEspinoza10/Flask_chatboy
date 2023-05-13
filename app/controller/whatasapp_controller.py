@@ -21,32 +21,32 @@ class Webhook:
     
     def ReceiverMessage(query):
         try:
-            
-            
             #Obtener el texto y el numero telefonico
             body = query.get_json()
             entry = (body["entry"])[0]
             changes = (entry["changes"])[0]
-            print(changes)
             value = (changes["value"])
             message = (value["messages"])[0]
             number = message["from"]
+            contacts = (value["contacts"])[0]
+            ws_id = (contacts["wa_id"])
             text = GetTextUser(message)
     
             # Obtener el perfil
             contacts = (value["contacts"])[0]
             profile = contacts["profile"]
             name = profile["name"]
-
-
+            
+            
+            
             # Obtencion del formato de envio
             data = GenerateMessage(text, number, name)
             
             for dato in data:
                 # Envio de mensaje
-                enviar = SendMessageWhatsapp(data=dato)    
+                enviar = SendMessageWhatsapp(data=dato)
 
             return "EVENT_RECEIVED"
         except Exception as e:
-            print("Error 1", e)
+            print("Error recibir", e)
             return "EVENT_RECEIVED"

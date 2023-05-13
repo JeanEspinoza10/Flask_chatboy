@@ -11,30 +11,22 @@ def TextPresentacion(number, name):
                 
         }
 
-    data_opciones = {
-        "messaging_product": "whatsapp",
-        "to": number,
-        "type": "text",
-        "text": {
-                "body": f"Marca el numero de la opcion que desea realizar su consulta✍"
+    data_datos = {
+            "messaging_product": "whatsapp",
+            "to": number,
+            "type": "text",
+            "text": {
+                "body": f"Puede brindarnos los siguientes datos:\n1) Nombre\n2) Correo ✉\n"
                 },
-    }
-
-    data_marca = {
-        "messaging_product": "whatsapp",
-        "to": number,
-        "type": "text",
-        "text": {
-                "body": f"1) Tickets de atencion 📝\n2) Accesos a sistemas informaticos Migraciones\n3) Accesos a sisteams informaticos Pasaporte\n4) Comunicarse con agente de mesa de serivicios 🕵\n5) Retorno de vaciones ✈"
-                },
-
-    }
+                
+        }
+    
     
 
 
+
     data.append(data_presentacion)
-    data.append(data_opciones)
-    data.append(data_marca)
+    data.append(data_datos)
 
     return data
 
