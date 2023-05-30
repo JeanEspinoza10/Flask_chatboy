@@ -12,4 +12,3 @@ class Datos(BaseModel):
     phone = Column(String(120), unique=True)
     correo = Column(String(120))
     oficina = Column(String(120))
-
