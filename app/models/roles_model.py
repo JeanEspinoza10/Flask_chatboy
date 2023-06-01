@@ -10,4 +10,4 @@ class RoleModel(BaseModel):
     name = Column(String(80))
     status = Column(Boolean, default=True)
 
-    users = relationship('Agentes',  back_populates='role')
+    users = relationship('Agentes',uselist=True,  back_populates='role')

@@ -13,10 +13,19 @@ auth_ns = api.namespace(
 request_schema = AuthRequestSchema(auth_ns)
 
 # Crando las rutas del servicio
-@auth_ns.route("/signup")
-class SignUp(Resource):
-    @auth_ns.expect(request_schema.signup(),validate=True)
+@auth_ns.route("/signin")
+class SignIn(Resource):
+    @auth_ns.expect(request_schema.signin(),validate=True)
     def post(self):
-        "Registro de usuario"
+        "Login de agentes"
+        controller = AuthController()
+        return controller.signIn(request.json)
+
+@auth_ns.route('/signup')
+class SignUp(Resource):
+    @auth_ns.expect(request_schema.signup(), validate=True)
+    def post(self):
+        ''' Registro de agentes '''
         controller = AuthController()
         return controller.signUp(request.json)
+

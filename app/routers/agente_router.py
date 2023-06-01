@@ -30,9 +30,23 @@ class Agentes(Resource):
         controller = AgenteController()
         return controller.create(request.json)
 
+   
+
 @agente_ns.route('/<int:id>')
 class UserById(Resource):
     def get(self, id):
         ''' Obtener un usuario por el ID '''
         controller = AgenteController()
         return controller.getById(id)
+    
+    
+    @agente_ns.expect(request_schema.update(), validate=True)
+    def put(self, id):
+        ''' Actualizar un usuario por el ID '''
+        controller = AgenteController()
+        return controller.update(id, request.json)
+    
+    def delete(self, id):
+        ''' Inhabilitar un usuario por el ID '''
+        controller = AgenteController()
+        return controller.delete(id)    

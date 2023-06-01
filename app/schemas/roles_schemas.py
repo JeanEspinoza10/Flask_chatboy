@@ -30,3 +30,4 @@ class RolesResponseSchema(SQLAlchemyAutoSchema):
         model = RoleModel
         ordered = True
     
+    users = Nested('AgentesResponseSchema', exclude=['role'], many=True)
