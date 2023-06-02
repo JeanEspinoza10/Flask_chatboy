@@ -11,14 +11,24 @@ from os import getenv
 
 app = Flask(__name__)
 
+
 app.config.from_object(environment[getenv('ENVIRONMENT')])
 CORS(app)
+
+authorizations = {
+    'Bearer': {
+        'type': 'apiKey',
+        'in': 'header',
+        'name': 'Authorization'
+    }
+}
 
 api = Api(
     app,
     title='Chatbot',
     version='0.1',
     description='Endpoints',
+    authorizations=authorizations,
     doc='/swagger-ui'
 )
 

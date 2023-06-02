@@ -38,4 +38,4 @@ class AgentesResponseSchema(SQLAlchemyAutoSchema):
         ordered = True
         exclude = ['password']
 
-    role = Nested('RolesResponseSchema', exclude=['users'], many=False)
+    role = Nested('RolesResponseSchema',only=["name"],exclude=["users"],  many=False)

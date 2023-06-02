@@ -16,6 +16,8 @@ class AuthController:
 
             # 1ª Validar que el usuario exista y no este inhabilitado
             record = self.model.where(name=username, status=True).first()
+            print(record.password)
+
             if record:
                 # 2ª Validar que la contraseña sea correcta
                 if record.checkPassword(password):

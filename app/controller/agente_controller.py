@@ -72,6 +72,7 @@ class AgenteController:
             record = self.model.where(id=id).first()
             if record:
                 record.update(**data)
+                record.hashPassword()
                 db.session.add(record)
                 db.session.commit()
                 return {

@@ -19,14 +19,14 @@ request_schema = AgentesRequestSchema(agente_ns)
 class Agentes(Resource):
     @agente_ns.expect(request_schema.all())
     def get(self):
-        '''Listamos los usuarios'''
+        '''Listamos los agentes'''
         query = request_schema.all().parse_args()
         controller = AgenteController()
         return controller.all(query)
 
     @agente_ns.expect(request_schema.create(), validate=True)
     def post(self):
-        '''Creacion de usuarios'''
+        '''Creacion de agentes'''
         controller = AgenteController()
         return controller.create(request.json)
 

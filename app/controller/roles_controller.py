@@ -1,12 +1,13 @@
 from app import db
 from app.models.roles_model import RoleModel
-from app.schemas.roles_schemas import RolesResponseSchema
+from app.schemas.roles_schemas import RolesResponseSchema, RolesResponseSchemaforunicos
 
 
 class RolesController:
     def __init__(self):
         self.model = RoleModel
         self.schema = RolesResponseSchema
+        self.schema2 = RolesResponseSchemaforunicos
 
     def all(self, query):
         try:
@@ -22,7 +23,7 @@ class RolesController:
             records = self.model.where(status=True).order_by('id').paginate(
                 page=page, per_page=per_page
             )
-            response = self.schema(many=True)
+            response = self.schema2(many=True)
             return {
                 'results': response.dump(records.items),
                 'pagination': {

@@ -14,7 +14,9 @@ role_ns = api.namespace(
 request_schema = RolesRequestSchema(role_ns)
 
 @role_ns.route('')
+@role_ns.doc(security="Bearer")
 class Roles(Resource):
+    @jwt_required()
     @role_ns.expect(request_schema.all())
     def get(self):
         ''' Listar todos los roles '''

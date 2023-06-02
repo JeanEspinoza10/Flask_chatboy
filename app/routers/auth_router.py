@@ -3,6 +3,7 @@ from flask_restx import Resource
 from flask import request
 from app.schemas.auth_schemas import AuthRequestSchema
 from app.controller.auth_controller import AuthController
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 auth_ns = api.namespace(
     name= "Autenticacion",
@@ -28,4 +29,15 @@ class SignUp(Resource):
         ''' Registro de agentes '''
         controller = AuthController()
         return controller.signUp(request.json)
+
+@auth_ns.route("/token/refresh")
+class TokenRefresh(Resource):
+    @jwt_required(refresh=True)
+    @auth_ns.expect(request_schema.refreshToken())
+    def post(self):
+        '''Obtener un nuevo acces token del refresh token'''
+        identity = get_jwt_identity()
+        controller = AuthController()
+        return controller.refreshToken(identity)
+
 

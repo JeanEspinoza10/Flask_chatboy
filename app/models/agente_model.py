@@ -14,7 +14,7 @@ class Agentes(BaseModel):
 
     # Relacion con el rol
     role_id = Column(Integer, ForeignKey('roles.id'))
-    role = relationship("RoleModel",  uselist=False, back_populates='users')
+    role = relationship("RoleModel",  uselist=False, back_populates="users")
     
     def hashPassword(self):
         pwd_encode = self.password.encode('utf-8')
