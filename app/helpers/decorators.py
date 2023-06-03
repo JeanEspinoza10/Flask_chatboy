@@ -6,7 +6,7 @@ def role_required(rol_id):
     def wrapper(fn):
         @wraps(fn)
         def decorator(*args, **kwargs):
-            role_user = current_user.rol_id
+            role_user = current_user.role_id
             if role_user == rol_id:
                 return fn(*args, **kwargs)
             return {

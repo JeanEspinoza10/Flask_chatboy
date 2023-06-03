@@ -52,3 +52,5 @@ class RolesById(Resource):
         ''' Inhabilitar un rol por el ID '''
         controller = RolesController()
         return controller.delete(id)
+
+

@@ -21,7 +21,7 @@ class AgentesRequestSchema:
             "name": fields.String(required=True, max_length=120),
             "correo": fields.String(required=True, max_length=120),
             "password": fields.String(required=True, max_length=120),
-            "role_id": fields.Integer(required=True)
+            "role_id": fields.Integer(required=True),
         })
     def update(self):
         return self.namespace.model('Agente Update', {
@@ -38,4 +38,4 @@ class AgentesResponseSchema(SQLAlchemyAutoSchema):
         ordered = True
         exclude = ['password']
 
-    role = Nested('RolesResponseSchema',only=["name"],exclude=["users"],  many=False)
+    role = Nested('RolesResponseSchema',only=["id"],exclude=["users"],  many=False)
