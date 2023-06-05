@@ -5,7 +5,6 @@ from flask_jwt_extended import jwt_required
 from app.helpers.decorators import role_required
 from app.controller.agente_controller import AgenteController
 from app.schemas.agente_schemas import AgentesRequestSchema
-from app.helpers.decorators import role_required
 
 agente_ns = api.namespace(
     name='Agentes',
@@ -35,7 +34,6 @@ class Agentes(Resource):
         '''Creacion de agentes'''
         controller = AgenteController()
         return controller.create(request.json)
-
    
 
 @agente_ns.route('/<int:id>')
@@ -70,3 +68,4 @@ class UserByProfile(Resource):
         '''Obtener los datos del usuario'''
         controller = AgenteController()
         return controller.profileMe()
+

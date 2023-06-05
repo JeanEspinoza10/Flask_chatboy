@@ -4,6 +4,8 @@ from flask import request
 from app.schemas.auth_schemas import AuthRequestSchema
 from app.controller.auth_controller import AuthController
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.helpers.decorators import role_required
+
 
 auth_ns = api.namespace(
     name= "Autenticacion",
@@ -22,8 +24,11 @@ class SignIn(Resource):
         controller = AuthController()
         return controller.signIn(request.json)
 
+
 @auth_ns.route('/signup')
+@auth_ns.doc(security="Bearer")
 class SignUp(Resource):
+    @role_required(rol_id=2)
     @auth_ns.expect(request_schema.signup(), validate=True)
     def post(self):
         ''' Registro de agentes '''
